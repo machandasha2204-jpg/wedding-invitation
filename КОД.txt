@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Дарья & Альберт</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:#f7f3ec;
+font-family:'Cormorant Garamond', serif;
+overflow-x:hidden;
+}
+
+/* ==========================
+ГЛАВНЫЙ ЭКРАН
+========================== */
+
+.hero{
+
+height:100vh;
+
+background:
+linear-gradient(
+rgba(0,0,0,.35),
+rgba(0,0,0,.35)
+),
+url("hero.png") center center no-repeat;
+
+background-size:cover;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+text-align:center;
+
+color:white;
+}
+
+.hero-content{
+padding:20px;
+}
+
+.hero-subtitle{
+
+font-family:'Great Vibes', cursive;
+
+font-size:60px;
+
+margin-bottom:15px;
+}
+
+.hero-title{
+
+font-size:110px;
+
+font-weight:400;
+
+line-height:1;
+}
+
+.hero-title span{
+color:#f2d45b;
+}
+
+.hero-date{
+
+font-size:34px;
+
+letter-spacing:6px;
+
+margin:25px 0;
+}
+
+.hero-text{
+
+font-size:30px;
+
+margin-bottom:40px;
+}
+
+.open-btn{
+
+display:inline-block;
+
+padding:18px 50px;
+
+background:white;
+
+color:#333;
+
+text-decoration:none;
+
+border-radius:50px;
+
+font-size:18px;
+
+transition:.3s;
+}
+
+.open-btn:hover{
+
+background:#f2d45b;
+}
+
+/* ==========================
+ТАЙМИНГ КАРТИНКОЙ
+========================== */
+
+.timeline-image-section{
+width:100%;
+}
+
+.timeline-image{
+
+display:block;
+width:100%;
+height:auto;
+}
+
+/* ==========================
+МЕСТО ПРОВЕДЕНИЯ
+========================== */
+/* ==========================
+ДРЕСС-КОД
+========================== */
+
+.dresscode-section{
+width:100%;
+}
+
+.dresscode-image{
+display:block;
+width:100%;
+height:auto;
+}
+/* ==========================
+ДЕТАЛИ И ПОЖЕЛАНИЯ
+========================== */
+
+.details-section{
+width:100%;
+}
+
+.details-image{
+display:block;
+width:100%;
+height:auto;
+}
+
+.location-section{
+width:100%;
+}
+
+.location-wrapper{
+position:relative;
+}
+
+.location-image{
+
+display:block;
+width:100%;
+height:auto;
+}
+
+.route-button{
+
+position:absolute;
+
+left:50%;
+bottom:2%;
+
+transform:translateX(-50%);
+
+width:320px;
+height:70px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:#f8f3e7;
+
+border:2px solid #6487e8;
+
+border-radius:50px;
+
+text-decoration:none;
+
+font-size:28px;
+
+color:#6487e8;
+
+transition:.3s;
+}
+
+.route-button:hover{
+
+background:#6487e8;
+color:white;
+}
+
+/* ==========================
+МОБИЛЬНАЯ ВЕРСИЯ
+========================== */
+
+@media(max-width:768px){
+
+.hero-title{
+font-size:60px;
+}
+
+.hero-subtitle{
+font-size:42px;
+}
+
+.hero-date{
+font-size:22px;
+}
+
+.hero-text{
+font-size:24px;
+}
+
+.route-button{
+
+width:220px;
+height:50px;
+
+font-size:20px;
+}
+
+}
+/* ==========================
+ПОДТВЕРЖДЕНИЕ ПРИСУТСТВИЯ
+========================== */
+
+.confirmation-section{
+    width:100%;
+}
+
+.confirmation-wrapper{
+    position:relative;
+}
+
+.confirmation-image{
+    display:block;
+    width:100%;
+    height:auto;
+}
+
+/* Невидимая кнопка анкеты */
+
+.rsvp-button{
+
+    position:absolute;
+
+    left:27%;
+    bottom:14%;
+
+    transform:translateX(-50%);
+
+    width:360px;
+    height:90px;
+
+    cursor:pointer;
+
+    z-index:10;
+}
+
+/* Невидимая кнопка Telegram */
+
+.chat-button{
+
+    position:absolute;
+
+    right:10%;
+    bottom:14%;
+
+    width:360px;
+    height:90px;
+
+    cursor:pointer;
+
+    z-index:10;
+}
+/* ==========================
+МОДАЛЬНОЕ ОКНО RSVP
+========================== */
+
+.modal{
+display:none;
+
+position:fixed;
+inset:0;
+
+background:rgba(0,0,0,.65);
+
+z-index:9999;
+
+justify-content:center;
+align-items:center;
+
+padding:20px;
+}
+
+.modal-content{
+
+background:#fffdf8;
+
+width:100%;
+max-width:700px;
+
+padding:40px;
+
+border-radius:25px;
+
+box-shadow:0 20px 60px rgba(0,0,0,.2);
+
+max-height:90vh;
+
+overflow-y:auto;
+}
+
+.modal-content h2{
+
+text-align:center;
+
+color:#3f69c8;
+
+font-size:42px;
+
+margin-bottom:25px;
+}
+
+.modal-content label{
+
+display:block;
+
+font-size:24px;
+
+margin-top:20px;
+
+margin-bottom:10px;
+}
+
+.modal-content input[type="text"]{
+
+width:100%;
+
+padding:12px 15px;
+
+border:1px solid #ddd;
+
+border-radius:12px;
+
+font-size:22px;
+
+font-family:'Cormorant Garamond', serif;
+}
+
+.radio-group{
+
+margin-bottom:15px;
+}
+
+.radio-group label{
+
+display:block;
+
+font-size:22px;
+
+margin:8px 0;
+}
+
+.submit-btn{
+
+width:100%;
+
+margin-top:25px;
+
+padding:15px;
+
+border:none;
+
+border-radius:15px;
+
+background:#3f69c8;
+
+color:white;
+
+font-size:24px;
+
+cursor:pointer;
+}
+
+.submit-btn:hover{
+opacity:.9;
+}
+
+.close-modal{
+
+width:100%;
+
+margin-top:10px;
+
+padding:15px;
+
+border:none;
+
+border-radius:15px;
+
+background:#e5e5e5;
+
+font-size:22px;
+
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="hero-subtitle">
+Мы женимся!
+</div>
+
+<div class="hero-title">
+Дарья <span>&</span> Альберт
+</div>
+
+<div class="hero-date">
+28 АВГУСТА 2026
+</div>
+
+<div class="hero-text">
+Будем счастливы разделить этот день с вами
+</div>
+
+<a href="#timeline" class="open-btn">
+Открыть приглашение
+</a>
+
+</div>
+
+</section>
+
+<!-- ТАЙМИНГ ДНЯ -->
+
+<section id="timeline" class="timeline-image-section">
+
+<img
+src="фон1.png"
+alt="Тайминг дня"
+class="timeline-image">
+
+</section>
+
+<!-- МЕСТО ПРОВЕДЕНИЯ -->
+
+<section class="location-section">
+
+<div class="location-wrapper">
+
+<img
+src="место проведения.png"
+alt="Место проведения"
+class="location-image">
+
+<a
+href="https://yandex.com/maps/-/CPXW4Vl9"
+target="_blank"
+class="route-button">
+
+Построить маршрут
+
+</a>
+
+</div>
+
+</section>
+<!-- ДРЕСС-КОД -->
+
+<section class="dresscode-section">
+
+    <img
+        src="дресскод.png"
+        alt="Дресс-код"
+        class="dresscode-image">
+
+</section>
+<!-- ДЕТАЛИ И ПОЖЕЛАНИЯ -->
+
+<section class="details-section">
+
+    <img
+        src="детали.png"
+        alt="Детали и пожелания"
+        class="details-image">
+
+</section>
+<!-- ПОДТВЕРЖДЕНИЕ ПРИСУТСТВИЯ -->
+
+<section class="confirmation-section">
+
+    <div class="confirmation-wrapper">
+
+        <img
+            src="подтверждение.png"
+            alt="Подтверждение присутствия"
+            class="confirmation-image">
+
+        <!-- Кнопка анкеты -->
+
+        <div
+            class="rsvp-button"
+            onclick="openRSVP()">
+        </div>
+
+        <!-- Кнопка Telegram -->
+
+        <a
+            href="https://t.me/+Ic2AQj0-9_02YzIy"
+            target="_blank"
+            class="chat-button">
+        </a>
+
+    </div>
+
+</section>
+<div id="rsvpModal" class="modal">
+
+<div class="modal-content">
+
+<h2>Анкета гостя</h2>
+
+<form id="guestForm">
+
+<label>Имя и фамилия</label>
+
+<input
+type="text"
+name="name"
+required>
+
+<label>Подтвердите своё присутствие</label>
+
+<div class="radio-group">
+
+<label>
+<input
+type="radio"
+name="attendance"
+value="Обязательно приду"
+required>
+
+Обязательно приду
+</label>
+
+<label>
+<input
+type="radio"
+name="attendance"
+value="Не смогу">
+
+К сожалению, не смогу присутствовать :(
+</label>
+
+</div>
+
+<label>Нужен ли трансфер до места проведения?</label>
+
+<div class="radio-group">
+
+<label>
+<input
+type="radio"
+name="transfer"
+value="Да, нужен"
+required>
+
+Да, нужен
+</label>
+
+<label>
+<input
+type="radio"
+name="transfer"
+value="Нет">
+
+Нет, доберёмся самостоятельно
+</label>
+
+</div>
+
+<label>Предпочтения по алкоголю</label>
+
+<div class="radio-group">
+
+<label><input type="radio" name="alcohol" value="Шампанское"> Шампанское</label>
+
+<label><input type="radio" name="alcohol" value="Вино белое"> Вино белое</label>
+
+<label><input type="radio" name="alcohol" value="Вино красное"> Вино красное</label>
+
+<label><input type="radio" name="alcohol" value="Водка"> Водка</label>
+
+<label><input type="radio" name="alcohol" value="Коньяк"> Коньяк</label>
+
+</div>
+
+<button
+type="submit"
+class="submit-btn">
+
+Отправить
+</button>
+
+<button
+type="button"
+class="close-modal"
+onclick="closeRSVP()">
+
+Закрыть
+</button>
+
+</form>
+
+</div>
+
+</div>
+<script>
+
+const SCRIPT_URL =
+"https://script.google.com/macros/s/AKfycbwFftG4lfM5DBNW86jfEgD6pCKkU4WWm0kVaNNk8Jm7LeQ1kfkZZ_AaORKWzDuoncpj/exec";
+
+function openRSVP(){
+    document.getElementById('rsvpModal').style.display='flex';
+}
+
+function closeRSVP(){
+    document.getElementById('rsvpModal').style.display='none';
+}
+
+document
+.getElementById('guestForm')
+.addEventListener('submit', async function(e){
+
+    e.preventDefault();
+
+    const form = e.target;
+
+    const data = {
+        name: form.name.value,
+        attendance: form.attendance.value,
+        transfer: form.transfer.value,
+        alcohol: form.alcohol.value
+    };
+
+    try{
+
+        await fetch(SCRIPT_URL,{
+            method:"POST",
+            body:JSON.stringify(data)
+        });
+
+        alert("Спасибо! Ваш ответ успешно отправлен.");
+
+        form.reset();
+
+        closeRSVP();
+
+    }catch(error){
+
+        console.error(error);
+
+        alert("Ошибка отправки. Попробуйте ещё раз.");
+
+    }
+
+});
+
+</script>
+</body>
+</html>

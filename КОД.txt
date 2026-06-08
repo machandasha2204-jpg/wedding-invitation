@@ -434,7 +434,82 @@ font-size:22px;
 
 cursor:pointer;
 }
+/* ==========================
+УСПЕШНАЯ ОТПРАВКА
+========================== */
 
+.success-modal{
+
+    display:none;
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.65);
+
+    z-index:10000;
+
+    justify-content:center;
+    align-items:center;
+}
+
+.success-content{
+
+    background:#fffdf8;
+
+    width:90%;
+    max-width:500px;
+
+    padding:40px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
+}
+
+.success-heart{
+
+    font-size:50px;
+
+    margin-bottom:15px;
+}
+
+.success-content h2{
+
+    color:#3f69c8;
+
+    font-size:42px;
+
+    margin-bottom:15px;
+}
+
+.success-content p{
+
+    font-size:24px;
+
+    line-height:1.5;
+
+    margin-bottom:25px;
+}
+
+.success-content button{
+
+    padding:14px 40px;
+
+    border:none;
+
+    border-radius:50px;
+
+    background:#3f69c8;
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+}
 </style>
 
 </head>
@@ -662,8 +737,12 @@ function openRSVP(){
     document.getElementById('rsvpModal').style.display='flex';
 }
 
-function closeRSVP(){
-    document.getElementById('rsvpModal').style.display='none';
+function showSuccess(){
+    document.getElementById('successModal').style.display='flex';
+}
+
+function closeSuccess(){
+    document.getElementById('successModal').style.display='none';
 }
 document
 .getElementById('guestForm')
@@ -708,11 +787,11 @@ document
             body: JSON.stringify(data)
         });
 
-        alert("Спасибо! Ваш ответ успешно отправлен.");
-
         form.reset();
 
-        closeRSVP();
+closeRSVP();
+
+showSuccess();
 
     }catch(error){
 
@@ -724,5 +803,25 @@ document
 
 });
 </script>
+<div id="successModal" class="success-modal">
+
+    <div class="success-content">
+
+        <div class="success-heart">💙</div>
+
+        <h2>Спасибо за ответ!</h2>
+
+        <p>
+            Мы получили вашу анкету и очень рады,
+            что вы разделите этот день вместе с нами.
+        </p>
+
+        <button onclick="closeSuccess()">
+            Закрыть
+        </button>
+
+    </div>
+
+</div>
 </body>
 </html>

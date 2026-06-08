@@ -682,14 +682,31 @@ document
 
     try{
 
-       await fetch(SCRIPT_URL,{
-    method:"POST",
-    mode:"no-cors",
-    headers:{
-        "Content-Type":"application/json"
-    },
-    body:JSON.stringify(data)
-});
+      document
+.getElementById('guestForm')
+.addEventListener('submit', async function(e){
+
+    e.preventDefault();
+
+    const form = e.target;
+
+    const data = {
+        name: form.name.value,
+        attendance: form.attendance.value,
+        transfer: form.transfer.value,
+        alcohol: form.alcohol.value
+    };
+
+    try{
+
+        await fetch(SCRIPT_URL,{
+            method:"POST",
+            mode:"no-cors",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body: JSON.stringify(data)
+        });
 
         alert("Спасибо! Ваш ответ успешно отправлен.");
 

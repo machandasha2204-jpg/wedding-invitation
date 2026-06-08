@@ -729,7 +729,6 @@ onclick="closeRSVP()">
 
 </div>
 <script>
-<script>
 
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwFftG4lfM5DBNW86jfEgD6pCKkU4WWm0kVaNNk8Jm7LeQ1kfkZZ_AaORKWzDuoncpj/exec";

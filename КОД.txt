@@ -729,12 +729,17 @@ onclick="closeRSVP()">
 
 </div>
 <script>
+<script>
 
 const SCRIPT_URL =
 "https://script.google.com/macros/s/AKfycbwFftG4lfM5DBNW86jfEgD6pCKkU4WWm0kVaNNk8Jm7LeQ1kfkZZ_AaORKWzDuoncpj/exec";
 
 function openRSVP(){
     document.getElementById('rsvpModal').style.display='flex';
+}
+
+function closeRSVP(){
+    document.getElementById('rsvpModal').style.display='none';
 }
 
 function showSuccess(){
@@ -744,26 +749,8 @@ function showSuccess(){
 function closeSuccess(){
     document.getElementById('successModal').style.display='none';
 }
-document
-.getElementById('guestForm')
-.addEventListener('submit', async function(e){
 
-    e.preventDefault();
-
-    const form = e.target;
-
-    const data = {
-        name: form.name.value,
-        attendance: form.attendance.value,
-        transfer: form.transfer.value,
-        alcohol: form.alcohol.value
-    };
-
-    try{
-
-      document
-.getElementById('guestForm')
-.addEventListener('submit', async function(e){
+document.getElementById('guestForm').addEventListener('submit', async function(e){
 
     e.preventDefault();
 
@@ -789,9 +776,9 @@ document
 
         form.reset();
 
-closeRSVP();
+        closeRSVP();
 
-showSuccess();
+        showSuccess();
 
     }catch(error){
 
@@ -802,6 +789,7 @@ showSuccess();
     }
 
 });
+
 </script>
 <div id="successModal" class="success-modal">
 
